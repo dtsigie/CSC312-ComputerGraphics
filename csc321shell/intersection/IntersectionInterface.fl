@@ -1,0 +1,141 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {IntersectionInterface.h} 
+code_name {IntersectionInterface.cpp}
+class IntersectionInterface {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window m_intersectionWindow {
+      label {Intersection UI} open
+      xywh {575 138 420 265} type Double resizable
+      code0 {\#include "IntersectionUI.h"} visible
+    } {
+      Fl_Group {} {open
+        xywh {5 25 145 30}
+      } {}
+      Fl_Choice m_iShapeType {
+        label {Object type} open
+        xywh {5 25 145 30} down_box BORDER_BOX align 5
+        code0 {\#include "../shapes/ShapesUI.h"}
+      } {
+        MenuItem {} {
+          label Sphere
+          callback {intersectionUI.changeShape( (ShapesUI::ShapeType) m_iShapeType->value());
+RedrawWindow();}
+          xywh {0 0 100 20} value 1
+        }
+        MenuItem {} {
+          label Cone
+          callback {intersectionUI.changeShape( (ShapesUI::ShapeType) m_iShapeType->value());
+RedrawWindow();}
+          xywh {10 10 100 20}
+        }
+        MenuItem {} {
+          label Cylinder
+          callback {intersectionUI.changeShape( (ShapesUI::ShapeType) m_iShapeType->value());
+RedrawWindow();}
+          xywh {20 20 100 20}
+        }
+        MenuItem {} {
+          label Cube
+          callback {intersectionUI.changeShape( (ShapesUI::ShapeType) m_iShapeType->value());
+RedrawWindow();}
+          xywh {30 30 100 20}
+        }
+        MenuItem {} {
+          label Torus
+          callback {intersectionUI.changeShape( (ShapesUI::ShapeType) m_iShapeType->value());
+RedrawWindow();} selected
+          xywh {0 0 30 20}
+        }
+      }
+      Fl_Value_Slider m_dXAt {
+        label {At x pos}
+        callback {RedrawWindow();}
+        xywh {5 75 200 25} type {Horz Knob} align 5 minimum -1.5 maximum 1.5
+      }
+      Fl_Value_Slider m_dYAt {
+        label {At y pos}
+        callback {RedrawWindow();}
+        xywh {5 115 200 25} type {Horz Knob} align 5 minimum -1.5 maximum 1.5
+      }
+      Fl_Value_Slider m_dZAt {
+        label {At z pos}
+        callback {RedrawWindow();}
+        xywh {5 155 200 25} type {Horz Knob} align 5 minimum -1.5 maximum 1.5
+      }
+      Fl_Value_Slider m_dTheta {
+        label {Vec theta}
+        callback {RedrawWindow();}
+        xywh {5 195 200 25} type {Horz Knob} align 5 maximum 360 step 1
+      }
+      Fl_Value_Slider m_dPhi {
+        label {Vec phi}
+        callback {RedrawWindow();}
+        xywh {5 235 200 25} type {Horz Knob} align 5 minimum -90 maximum 90 step 1 value 45
+      }
+      Fl_Button {} {
+        label {Write test}
+        callback {intersectionUI.writeTest();}
+        xywh {330 25 85 25}
+      }
+      Fl_Value_Slider m_dXRot {
+        label {View rotation}
+        callback {RedrawWindow();}
+        xywh {215 75 200 25} type {Horz Knob} align 5 maximum 360 step 1
+      }
+      Fl_Value_Slider m_dYRot {
+        label {View height}
+        callback {RedrawWindow();}
+        xywh {215 115 200 25} type {Horz Knob} align 5 minimum -90 maximum 90 step 1
+      }
+      Fl_Check_Button m_bGrid {
+        label {Show grid}
+        callback {RedrawWindow();}
+        xywh {215 155 25 25} down_box DOWN_BOX value 1
+      }
+      Fl_Check_Button m_bRay {
+        label {Show ray}
+        callback {RedrawWindow();}
+        xywh {215 195 25 25} down_box DOWN_BOX value 1
+      }
+      Fl_Check_Button m_bRayShadow {
+        label {Show ray shadow}
+        callback {RedrawWindow();}
+        xywh {215 235 25 25} down_box DOWN_BOX value 1
+      }
+      Fl_Value_Input m_iSeed {
+        label Seed
+        xywh {240 30 85 20}
+      }
+    }
+  }
+  Function {IntersectionInterface()} {open
+  } {
+    code {m_intersectionWindow = make_window();
+intersectionUI.setUI( this );
+intersectionUI.changeShape( ShapesUI::SHAPE_SPHERE );} {}
+  }
+  decl {IntersectionUI intersectionUI;} {}
+  Function {getUI()} {open return_type {UIInterface *}
+  } {
+    code {return &intersectionUI;} {}
+  }
+  Function {getTheta() const} {open return_type double
+  } {
+    code {return M_PI * m_dTheta->value() / 180.0;} {}
+  }
+  Function {getPhi() const} {open return_type double
+  } {
+    code {return M_PI * m_dPhi->value() / 180.0;} {}
+  }
+  Function {getXRot() const} {open return_type double
+  } {
+    code {return M_PI * m_dXRot->value() / 180.0;} {}
+  }
+  Function {getYRot() const} {open return_type double
+  } {
+    code {return M_PI * m_dYRot->value() / 180.0;} {}
+  }
+} 

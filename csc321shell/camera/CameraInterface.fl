@@ -1,0 +1,86 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {CameraInterface.h} 
+code_name {CameraInterface.cpp}
+class CameraInterface {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window m_cameraWindow {
+      label {Camera UI} open
+      xywh {677 295 155 165} type Double resizable
+      code0 {\#include "CameraUI.h"} visible
+    } {
+      Fl_Choice m_iSequence {
+        label {Test Sequence} open selected
+        xywh {5 25 145 30} down_box BORDER_BOX align 5
+      } {
+        MenuItem {} {
+          label {Fixed Position}
+          callback {RedrawWindow();}
+          xywh {0 0 100 20} value 1
+        }
+        MenuItem {} {
+          label {Eye Position}
+          callback {RedrawWindow();}
+          xywh {10 10 100 20}
+        }
+        MenuItem {} {
+          label {Focus Point}
+          callback {RedrawWindow();}
+          xywh {20 20 100 20}
+        }
+        MenuItem {} {
+          label Zoom
+          callback {RedrawWindow();}
+          xywh {30 30 100 20}
+        }
+        MenuItem {} {
+          label Roll
+          callback {RedrawWindow();}
+          xywh {40 40 100 20}
+        }
+        MenuItem {} {
+          label {Near-Far}
+          callback {RedrawWindow();}
+          xywh {50 50 100 20}
+        }
+        MenuItem {} {
+          label Keyboard
+          callback {RedrawWindow();}
+          xywh {60 60 100 20}
+        }
+        MenuItem {} {
+          label IBar
+          callback {RedrawWindow();}
+          xywh {70 70 100 20}
+        }
+      }
+      Fl_Button m_bPlayPause {
+        label {Play / Pause}
+        callback {cameraUI.setPlayPause();}
+        xywh {10 70 135 25} type Toggle
+      }
+      Fl_Button {} {
+        label {Next Frame}
+        callback {cameraUI.setNextFrame();}
+        xywh {10 100 135 25}
+      }
+      Fl_Button {} {
+        label {Print camera}
+        callback {cameraUI.print();}
+        xywh {10 135 135 25}
+      }
+    }
+  }
+  Function {CameraInterface()} {open
+  } {
+    code {m_cameraWindow = make_window();
+cameraUI.setUI( this );} {}
+  }
+  decl {CameraUI cameraUI;} {}
+  Function {getUI()} {open return_type {UIInterface *}
+  } {
+    code {return &cameraUI;} {}
+  }
+} 

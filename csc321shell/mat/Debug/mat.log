@@ -1,0 +1,85 @@
+﻿Build started 4/7/2015 8:04:43 PM.
+     1>Project "C:\Users\Dawit\Desktop\CSC321\csc321files\csc321files\csc321\csc321shell\mat\mat.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\mat.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\mat.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\mat.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\vecmath\Matrix3.cpp ..\vecmath\Matrix4.cpp ..\vecmath\Point3.cpp ..\vecmath\ScreenPoint.cpp ..\vecmath\ScreenVector.cpp ..\vecmath\Vector3.cpp ..\vecmath\Vector4.cpp mat.cpp
+         mat.cpp
+         Vector4.cpp
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector4.cpp(1): warning C4627: '#include "Vector4.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector4.cpp(3): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector4.cpp(4): warning C4627: '#include <assert.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector4.cpp(6): warning C4627: '#include "../csc321.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector4.cpp(126): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "StdAfx.h"' to your source?
+         Vector3.cpp
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector3.cpp(1): warning C4627: '#include "Vector3.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector3.cpp(3): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector3.cpp(4): warning C4627: '#include <assert.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector3.cpp(6): warning C4627: '#include "../csc321.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\vector3.cpp(134): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "StdAfx.h"' to your source?
+         ScreenVector.cpp
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\screenvector.cpp(1): warning C4627: '#include "ScreenVector.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\screenvector.cpp(3): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\screenvector.cpp(4): warning C4627: '#include <assert.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\screenvector.cpp(107): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "StdAfx.h"' to your source?
+         ScreenPoint.cpp
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\screenpoint.cpp(1): warning C4627: '#include "ScreenPoint.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\screenpoint.cpp(3): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\screenpoint.cpp(4): warning C4627: '#include <assert.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\screenpoint.cpp(81): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "StdAfx.h"' to your source?
+         Point3.cpp
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\point3.cpp(1): warning C4627: '#include "Point3.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\point3.cpp(3): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\point3.cpp(4): warning C4627: '#include <assert.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\point3.cpp(6): warning C4627: '#include "../csc321.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\point3.cpp(112): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "StdAfx.h"' to your source?
+         Matrix4.cpp
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix4.cpp(1): warning C4627: '#include "Matrix4.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix4.cpp(3): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix4.cpp(4): warning C4627: '#include <assert.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix4.cpp(5): warning C4627: '#include <cstring>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix4.cpp(7): warning C4627: '#include "../csc321.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix4.cpp(352): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "StdAfx.h"' to your source?
+         Matrix3.cpp
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix3.cpp(1): warning C4627: '#include "Matrix3.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix3.cpp(3): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix3.cpp(4): warning C4627: '#include <assert.h>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix3.cpp(5): warning C4627: '#include <cstring>': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix3.cpp(7): warning C4627: '#include "../csc321.h"': skipped when looking for precompiled header use
+                 Add directive to 'StdAfx.h' or rebuild precompiled header
+     1>c:\users\dawit\desktop\csc321\csc321files\csc321files\csc321\csc321shell\vecmath\matrix3.cpp(171): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "StdAfx.h"' to your source?
+         Generating Code...
+     1>Done Building Project "C:\Users\Dawit\Desktop\CSC321\csc321files\csc321files\csc321\csc321shell\mat\mat.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.48

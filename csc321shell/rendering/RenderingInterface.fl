@@ -1,0 +1,90 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {RenderingInterface.h} 
+code_name {RenderingInterface.cpp}
+class RenderingInterface {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window m_renderWindow {
+      label {Rendering UI} open
+      xywh {700 265 310 250} type Double
+      code0 {\#include "RenderingUI.h"} visible
+    } {
+      Fl_Button {} {
+        label {Load scene}
+        callback {const char *strBack = fl_file_chooser("Scene name?", "*.sc", strSceneName.c_str() );
+
+if ( strBack ) {
+    renderingUI.readScene( strBack );
+    strSceneName = strBack;
+}
+RedrawWindow();}
+        xywh {5 5 100 25}
+        code0 {\#include <FL/Fl_File_Chooser.H>}
+      }
+      Fl_Output m_txtStatus {
+        label Status selected
+        xywh {5 80 300 100} align 5
+      }
+      Fl_Choice m_iRenderType {
+        label {Render Type} open
+        xywh {140 25 135 25} down_box BORDER_BOX align 5
+      } {
+        MenuItem {} {
+          label Scanline
+          callback {RedrawWindow();}
+          xywh {0 0 100 20}
+        }
+        MenuItem {} {
+          label {Ray trace}
+          callback {RedrawWindow();}
+          xywh {10 10 100 20}
+        }
+        MenuItem {} {
+          label {Path trace}
+          callback {RedrawWindow();}
+          xywh {20 20 100 20}
+        }
+      }
+      Fl_Value_Input m_iWidth {
+        label Width
+        xywh {40 185 40 25} minimum 10 maximum 1024 step 1 value 256
+      }
+      Fl_Value_Input m_iHeight {
+        label Height
+        xywh {125 185 40 25} minimum 10 maximum 1024 step 1 value 256
+      }
+      Fl_Progress m_progress {
+        label Progress
+        xywh {5 215 300 30} selection_color 60
+      }
+      Fl_Value_Output m_iTime {
+        label Time
+        xywh {215 185 90 25}
+      }
+      Fl_Button m_bRenderOn {
+        label {Start rendering}
+        callback {if ( m_bRenderOn->value() )
+   renderingUI.startRendering();
+else
+   renderingUI.stopRendering();}
+        xywh {5 35 100 25} type Toggle
+      }
+    }
+  }
+  Function {RenderingInterface()} {open
+  } {
+    code {m_renderWindow = make_window();
+m_progress->minimum(0);
+m_progress->maximum(1);
+strSceneName = "../data/scenes/bujans_raquel.sc";
+renderingUI.setUI( this );} {}
+  }
+  decl {RenderingUI renderingUI;} {}
+  Function {getUI()} {open return_type {UIInterface *}
+  } {
+    code {return &renderingUI;} {}
+  }
+  decl {std::string strSceneName;} {}
+} 

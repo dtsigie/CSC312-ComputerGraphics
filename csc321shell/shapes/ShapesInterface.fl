@@ -1,0 +1,124 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {ShapesInterface.h} 
+code_name {ShapesInterface.cpp}
+class ShapesInterface {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window m_shapesWindow {
+      label {Shapes UI} open
+      xywh {600 275 395 145} type Double hide resizable
+      code0 {\#include "ShapesUI.h"}
+    } {
+      Fl_Choice m_iShapeType {
+        label {Shape Type} open
+        xywh {5 25 180 25} down_box BORDER_BOX align 5
+      } {
+        MenuItem {} {
+          label Sphere
+          callback {myShapes.changedShape();}
+          xywh {0 0 100 20} value 1
+        }
+        MenuItem {} {
+          label Cone
+          callback {myShapes.changedShape();}
+          xywh {10 10 100 20}
+        }
+        MenuItem {} {
+          label Cylinder
+          callback {myShapes.changedShape();} selected
+          xywh {20 20 100 20}
+        }
+        MenuItem {} {
+          label Cube
+          callback {myShapes.changedShape();}
+          xywh {30 30 100 20}
+        }
+        MenuItem {} {
+          label Torus
+          callback {myShapes.changedShape();}
+          xywh {0 0 30 20}
+        }
+      }
+      Fl_Choice m_iDisplayType {
+        label {Display Style} open
+        xywh {5 70 180 25} down_box BORDER_BOX align 5
+      } {
+        MenuItem {} {
+          label Wireframe
+          callback {RedrawWindow();}
+          xywh {10 10 100 20} value 1
+        }
+        MenuItem {} {
+          label {Flat shading}
+          callback {RedrawWindow();}
+          xywh {20 20 100 20} value 1
+        }
+        MenuItem {} {
+          label {Smooth shading}
+          callback {RedrawWindow();}
+          xywh {30 30 100 20} value 1
+        }
+      }
+      Fl_Value_Slider m_dXRot {
+        label {X Rotation}
+        callback {RedrawWindow();}
+        xywh {190 25 200 25} type {Horz Knob} box BORDER_BOX align 1 maximum 360 step 1
+      }
+      Fl_Value_Slider m_dYRot {
+        label {Y Rotation}
+        callback {RedrawWindow();}
+        xywh {190 70 200 25} type {Horz Knob} box BORDER_BOX align 1 maximum 180 step 1 value 90
+      }
+      Fl_Button {} {
+        label Tessellate
+        callback {myShapes.changedTessel();}
+        xywh {105 115 100 25}
+      }
+      Fl_Value_Input m_iTessel1 {
+        label {Tessellation:}
+        xywh {6 115 45 25} align 5 maximum 100 step 1 value 5
+      }
+      Fl_Value_Input m_iTessel2 {
+        xywh {55 115 45 25} align 5 maximum 100 step 1 value 5
+      }
+    }
+  }
+  Function {ShapesInterface()} {open
+  } {
+    code {m_shapesWindow = make_window();
+myShapes.setUI( this );
+myShapes.changedShape();
+myShapes.changedTessel();} {}
+  }
+  decl {ShapesUI myShapes;} {}
+  Function {getShapeType() const} {open return_type {ShapesUI::ShapeType}
+  } {
+    code {return (ShapesUI::ShapeType) m_iShapeType->value();} {}
+  }
+  Function {getDisplayType() const} {open return_type {ShapesUI::DisplayType}
+  } {
+    code {return (ShapesUI::DisplayType) m_iDisplayType->value();} {}
+  }
+  Function {getTessel1() const} {open return_type int
+  } {
+    code {return (int) m_iTessel1->value();} {}
+  }
+  Function {getTessel2() const} {open return_type int
+  } {
+    code {return (int) m_iTessel2->value();} {}
+  }
+  Function {getUI()} {open return_type {UIInterface *}
+  } {
+    code {return &myShapes;} {}
+  }
+  Function {getXRot() const} {open return_type double
+  } {
+    code {return M_PI * m_dXRot->value() / 180.0;} {}
+  }
+  Function {getYRot() const} {open return_type double
+  } {
+    code {return M_PI * m_dYRot->value() / 180.0 - M_PI / 2.0;} {}
+  }
+} 

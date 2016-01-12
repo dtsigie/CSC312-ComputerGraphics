@@ -1,0 +1,73 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {InteractiveInterface.h} 
+code_name {InteractiveInterface.cpp}
+class InteractiveInterface {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window m_interactiveWindow {
+      label {Interactive UI} open selected
+      xywh {690 265 315 190} type Double resizable
+      code0 {\#include "InteractiveUI.h"} visible
+    } {
+      Fl_Button {} {
+        label {Load scene}
+        callback {const char *strBack = fl_file_chooser("Scene name?", "*.sc", strSceneName.c_str() );
+
+if ( strBack ) {
+    interactiveUI.readScene( strBack );
+    strSceneName = strBack;
+}
+RedrawWindow();}
+        xywh {5 5 100 25}
+        code0 {\#include <FL/Fl_File_Chooser.H>}
+      }
+      Fl_Check_Button m_bLighting {
+        label Lighting
+        callback {RedrawWindow();}
+        xywh {115 5 25 25} down_box DOWN_BOX value 1
+      }
+      Fl_Check_Button m_bInteractive {
+        label Interactive
+        callback {RedrawWindow();}
+        xywh {210 5 25 25} down_box DOWN_BOX value 1
+      }
+      Fl_Output m_txtStatus {
+        label Status
+        xywh {5 90 305 95} align 5
+      }
+      Fl_Check_Button m_bIBar {
+        label IBar
+        callback {RedrawWindow();}
+        xywh {210 30 25 25} down_box DOWN_BOX
+      }
+      Fl_Check_Button m_bIBarHelp {
+        label Help
+        callback {RedrawWindow();}
+        xywh {255 30 25 25} down_box DOWN_BOX
+      }
+      Fl_Check_Button m_bWidget {
+        label Widget
+        callback {RedrawWindow();}
+        xywh {108 60 25 25} down_box DOWN_BOX value 1
+      }
+      Fl_Check_Button m_bWidgetMove {
+        label {Move with widget}
+        xywh {183 60 25 25} down_box DOWN_BOX shortcut 0x40077 value 1
+      }
+    }
+  }
+  Function {InteractiveInterface()} {open
+  } {
+    code {m_interactiveWindow = make_window();
+strSceneName = "../data/scenes/bujans_raquel.sc";
+interactiveUI.setUI( this );} {}
+  }
+  decl {InteractiveUI interactiveUI;} {}
+  Function {getUI()} {open return_type {UIInterface *}
+  } {
+    code {return &interactiveUI;} {}
+  }
+  decl {std::string strSceneName;} {}
+} 

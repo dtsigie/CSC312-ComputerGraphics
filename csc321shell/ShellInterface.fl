@@ -1,0 +1,113 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {ShellInterface.h} 
+code_name {ShellInterface.cpp}
+class ShellInterface {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window m_mainWindow {
+      label {csc321 Shell} open
+      xywh {149 66 810 640} type Double hide resizable
+      code0 {\#include <string>}
+    } {
+      Fl_Text_Display strMyName {
+        label {Name:} selected
+        xywh {530 5 275 25} align 4 resizable
+      }
+      Fl_Menu_Bar {} {open
+        xywh {5 5 100 25} labeltype NO_LABEL
+      } {
+        Submenu {} {
+          label {File IO} open
+          xywh {0 0 100 20}
+          code0 {\#include <FL/Fl_File_Chooser.H>}
+        } {
+          MenuItem {} {
+            label {Read image}
+            callback {const char *strBack = fl_file_chooser("Image name?", "*.{png,bmp,jpg}", strImageName.c_str() );
+
+if ( strBack ) {
+    glWindow->readImage( strBack );
+    strImageName = strBack;
+}
+glWindow->redraw();}
+            tooltip {Read in an image} xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Screen shot}
+            callback {const char *strBack = fl_file_chooser("Image name?", "*.bmp", strScreenshotName.c_str() );
+
+if ( strBack ) {
+    glWindow->saveImage( strBack );
+    strScreenshotName = strBack;
+}}
+            tooltip {Save a screen shot} xywh {10 10 100 20}
+          }
+          MenuItem {} {
+            label Exit
+            callback {exit(0);}
+            tooltip Quit xywh {10 10 100 20}
+          }
+        }
+        Submenu {} {
+          label Lab open
+          xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label Brush
+            callback {glWindow->setState( GLWindow::LAB_BRUSH );}
+            xywh {0 0 100 20} type Radio
+          }
+          MenuItem {} {
+            label Shapes
+            callback {glWindow->setState( GLWindow::LAB_SHAPES );}
+            xywh {10 10 100 20} type Radio
+          }
+          MenuItem {} {
+            label Camera
+            callback {glWindow->setState( GLWindow::LAB_CAMERA );}
+            xywh {20 20 100 20} type Radio
+          }
+          MenuItem {} {
+            label Intersection
+            callback {glWindow->setState( GLWindow::LAB_INTERSECTION );}
+            xywh {30 30 100 20} type Radio
+          }
+          MenuItem {} {
+            label Sceneview
+            callback {glWindow->setState( GLWindow::LAB_SCENEVIEW );}
+            xywh {40 40 100 20} type Radio
+          }
+          MenuItem {} {
+            label Interactive
+            callback {glWindow->setState( GLWindow::LAB_USER_INTERFACE );}
+            xywh {50 50 100 20} type Radio
+          }
+          MenuItem {} {
+            label Rendering
+            callback {glWindow->setState( GLWindow::LAB_RENDERING );}
+            xywh {60 60 100 20} type Radio
+          }
+        }
+      }
+      Fl_Box glWindow {
+        xywh {5 35 800 600}
+        code0 {\#include "GLWindow.h"}
+        class GLWindow
+      }
+    }
+  }
+  Function {ShellInterface()} {open
+  } {
+    code {m_mainWindow = make_window();
+strImageName = "../data/tux.jpg";
+strScreenshotName = "../data/screenshot.bmp";
+static Fl_Text_Buffer buf;
+buf.append("Dawit Tsigie");
+strMyName->buffer(buf);
+strMyName->show();} {}
+  }
+  decl {std::string strImageName;} {}
+  decl {std::string strScreenshotName;} {}
+} 

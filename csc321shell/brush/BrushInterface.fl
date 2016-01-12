@@ -1,0 +1,161 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {BrushInterface.h} 
+code_name {BrushInterface.cpp}
+class BrushInterface {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window m_brushWindow {
+      label {Brush UI} open
+      xywh {390 225 480 220} type Double resizable
+      code0 {\#include "MyBrush.h"} visible
+    } {
+      Fl_Choice m_iBrushType {
+        label {Brush Type} open
+        xywh {5 25 180 30} down_box BORDER_BOX align 5
+      } {
+        MenuItem {} {
+          label Constant
+          callback {myBrush.changedBrush();}
+          xywh {0 0 100 20} value 1
+        }
+        MenuItem {} {
+          label Linear
+          callback {myBrush.changedBrush();}
+          xywh {10 10 100 20}
+        }
+        MenuItem {} {
+          label Quadratic
+          callback {myBrush.changedBrush();}
+          xywh {20 20 100 20}
+        }
+        MenuItem {} {
+          label Special
+          callback {myBrush.changedBrush();} selected
+          xywh {30 30 100 20}
+        }
+      }
+      Fl_Value_Slider m_iRadius {
+        label Radius
+        callback {myBrush.changedBrush( );}
+        xywh {5 78 180 30} type {Horz Knob} align 5 minimum 1 maximum 64 step 1 value 4
+      }
+      Fl_Value_Slider m_dPixelFlow {
+        label {Pixel flow}
+        xywh {5 132 180 30} type {Horz Knob} align 5 value 0.5
+      }
+      Fl_Choice m_iToolType {
+        label Tool open
+        xywh {5 185 180 30} down_box BORDER_BOX align 5
+      } {
+        MenuItem {} {
+          label Brush
+          xywh {10 10 100 20} value 1
+        }
+        MenuItem {} {
+          label Line
+          xywh {20 20 100 20} value 1
+        }
+        MenuItem {} {
+          label Circle
+          xywh {30 30 100 20} value 1
+        }
+        MenuItem {} {
+          label Polygon
+          xywh {40 40 100 20} value 1
+        }
+        MenuItem {} {
+          label Filter
+          xywh {50 50 100 20} value 1
+        }
+      }
+      Fl_Choice m_iFilterType {
+        label Filter open
+        xywh {205 185 180 30} down_box BORDER_BOX align 5
+      } {
+        MenuItem {} {
+          label Blur
+          xywh {20 20 100 20} value 1
+        }
+        MenuItem {} {
+          label Sharpen
+          xywh {30 30 100 20} value 1
+        }
+        MenuItem {} {
+          label Edge
+          xywh {40 40 100 20} value 1
+        }
+      }
+      Fl_Value_Slider m_dRed {
+        label R
+        callback {SetPreview();}
+        xywh {205 25 35 140} type {Vert Knob} box BORDER_BOX align 1 value 0.5
+      }
+      Fl_Value_Slider m_dGreen {
+        label G
+        callback {SetPreview();}
+        xywh {256 25 35 140} type {Vert Knob} box BORDER_BOX align 1 value 0.5
+      }
+      Fl_Value_Slider m_dBlue {
+        label B
+        callback {SetPreview();}
+        xywh {308 25 35 140} type {Vert Knob} box BORDER_BOX align 1 value 0.5
+      }
+      Fl_Box m_boxPreview {
+        label Preview
+        xywh {360 45 115 120} box DOWN_BOX color 80 align 1
+      }
+    }
+  }
+  Function {BrushInterface()} {open
+  } {
+    code {m_brushWindow = make_window();
+myBrush.setUI( this );
+myBrush.changedBrush();
+SetPreview();} {}
+  }
+  Function {SetPreview()} {open return_type void
+  } {
+    code {Fl_Color c = fl_rgb_color( (unsigned char) (255.0 * m_dRed->value()),
+                           (unsigned char) (255.0 * m_dGreen->value()),
+                           (unsigned char) (255.0 * m_dBlue->value()) );
+m_boxPreview->color( c );
+m_boxPreview->redraw();} {}
+  }
+  decl {MyBrush myBrush;} {}
+  Function {getBrushType() const} {open return_type {MyBrush::BrushType}
+  } {
+    code {return (MyBrush::BrushType) m_iBrushType->value();} {}
+  }
+  Function {getFilterType() const} {open return_type {MyBrush::FilterType}
+  } {
+    code {return (MyBrush::FilterType) m_iFilterType->value();} {}
+  }
+  Function {getRadius() const} {open return_type int
+  } {
+    code {return (int) m_iRadius->value();} {}
+  }
+  Function {getToolType() const} {open return_type {MyBrush::ToolType}
+  } {
+    code {return (MyBrush::ToolType) m_iToolType->value();} {}
+  }
+  Function {getColor() const} {open return_type Color
+  } {
+    code {return Color( m_dRed->value(),
+              m_dGreen->value(),
+              m_dBlue->value() );} {}
+  }
+  Function {getFlow() const} {open return_type float
+  } {
+    code {return (float) m_dPixelFlow->value();} {}
+  }
+  Function {loadImage( Fl_Image *image )} {open return_type void
+  } {
+    code {myBrush.loadImage(image);} {}
+  }
+  Function {getUI()} {open return_type {UIInterface *}
+  } {
+    code {return &myBrush;} {}
+  }
+} 
