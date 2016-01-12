@@ -1,13 +1,13 @@
 Author- Dawit Tsigie    Title - Project 1
 
 1. No additional methods, classes or files added.
-2. 
-3. The mask was implementd using a 2d Vector container. I used a double for loop to iterate through the mask and set the respective distribution value. To assign the correct distribution value for the selected brush type i used a switch statement to switch between the different brush types.
 
-4.  The algorithm for the scanline line drawing and circle drawing is quadratic at worst case.
+2. The mask was implementd using a 2d Vector container. I used a double for loop to iterate through the mask and set the respective distribution value. To assign the correct distribution value for the selected brush type i used a switch statement to switch between the different brush types.
+
+3.  The algorithm for the scanline line drawing and circle drawing is quadratic at worst case.
 The algorithm for the scanline line drawing and circle drawing is linear at worst case.
-5. I did the scanline line drawing and circle drawing.
-6. Extra credit - I implemented a special brush which is a derivative of the gaussian function.
+4. I did the scanline line drawing and circle drawing.
+5. Extra credit - I implemented a special brush which is a derivative of the gaussian function.
 
 Project 2 - Tesselation
 
